@@ -482,7 +482,7 @@ class TransactionDataGenerator:
         return transaction
 
     def generate_dataset(self, num_customers: int, 
-                        transactions_per_customer: Tuple[int, int]=(20, 50),
+                        transactions_per_customer: Tuple[int, int]=(20, 50), # min 20 and max 50 transaction per customer
                         fraud_percentage: float=0.1) -> pd.DataFrame:
         """Generate complete dataset with specified parameters."""
         all_transactions = []
