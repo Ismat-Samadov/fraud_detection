@@ -510,9 +510,9 @@ class TransactionDataGenerator:
 if __name__ == "__main__":
     generator = TransactionDataGenerator()
     df = generator.generate_dataset(
-        num_customers=5000,
-        transactions_per_customer=(1000, 2000),
-        fraud_percentage=0.2
+        num_customers=500,
+        transactions_per_customer=(100, 200),
+        fraud_percentage=0.1
     )
     print(f"Generated {len(df)} transactions")
     print(f"Fraud transactions: {df['is_fraud'].sum()}")
