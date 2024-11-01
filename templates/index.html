@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraud Detection</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Fraud Detection</h1>
+        <form action="/predict" method="post">
+            <label>Amount: <input type="number" step="0.01" name="amount" required></label><br>
+            <label>Distance from Home: <input type="number" name="distance_from_home" required></label><br>
+            <label>Transaction Hour: <input type="number" name="transaction_hour" required></label><br>
+            <label>Merchant Category: <input type="text" name="merchant_category" required></label><br>
+            <label>Merchant Type: <input type="text" name="merchant_type" required></label><br>
+            <label>Merchant: <input type="text" name="merchant" required></label><br>
+            <label>Currency: <input type="text" name="currency" required></label><br>
+            <label>Country: <input type="text" name="country" required></label><br>
+            <label>City: <input type="text" name="city" required></label><br>
+            <label>City Size: <input type="text" name="city_size" required></label><br>
+            <label>Card Type: <input type="text" name="card_type" required></label><br>
+            <label>Device: <input type="text" name="device" required></label><br>
+            <label>Channel: <input type="text" name="channel" required></label><br>
+            <label>Day of Week: <input type="number" name="day_of_week" required></label><br>
+            <label>Is Weekend: <input type="number" name="is_weekend" required></label><br>
+            <label>Num Transactions Last Hour: <input type="number" name="num_transactions_last_hour" required></label><br>
+            <label>Total Amount Last Hour: <input type="number" step="0.01" name="total_amount_last_hour" required></label><br>
+            <button type="submit">Predict Fraud</button>
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <h2>Prediction Result</h2>
+            <p>{{ result.prediction }}</p>
+            <p>Probability of Non-Fraud: {{ result.probability_of_non_fraud | round(2) }}</p>
+            <p>Probability of Fraud: {{ result.probability_of_fraud | round(2) }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
