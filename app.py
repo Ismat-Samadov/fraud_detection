@@ -16,27 +16,11 @@ def index():
 # Prediction API endpoint
 @app.route('/predict', methods=['POST'])
 def predict():
-    # Extract form data and convert to DataFrame
-    data = {
-        'amount': float(request.form['amount']),
-        'distance_from_home': int(request.form['distance_from_home']),
-        'transaction_hour': int(request.form['transaction_hour']),
-        'merchant_category': request.form['merchant_category'],
-        'merchant_type': request.form['merchant_type'],
-        'merchant': request.form['merchant'],
-        'currency': request.form['currency'],
-        'country': request.form['country'],
-        'city': request.form['city'],
-        'city_size': request.form['city_size'],
-        'card_type': request.form['card_type'],
-        'device': request.form['device'],
-        'channel': request.form['channel'],
-        'day_of_week': int(request.form['day_of_week']),
-        'is_weekend': int(request.form['is_weekend']),
-        'num_transactions_last_hour': int(request.form['num_transactions_last_hour']),
-        'total_amount_last_hour': float(request.form['total_amount_last_hour']),
-    }
-    input_data = pd.DataFrame(data, index=[0])
+    # Get JSON data from request
+    data = request.get_json()
+
+    # Convert JSON data to DataFrame
+    input_data = pd.DataFrame([data])
 
     # Make prediction
     prediction = model.predict(input_data)

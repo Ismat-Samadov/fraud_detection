@@ -10,20 +10,25 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #e9edf2;
     overflow-x: hidden;
+    overflow-y: auto;  /* Allow vertical scrolling if form exceeds screen height */
+    padding: 20px;     /* Padding to prevent content from sticking to screen edges */
 }
 
+/* Container for Form */
 .container {
     max-width: 600px;
-    width: 90%;
+    width: 100%;
     padding: 25px;
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     text-align: center;
     animation: fadeIn 0.5s ease-in-out;
+    margin-top: 20px;
+    margin-bottom: 20px; /* Margin to provide space at the bottom on smaller screens */
 }
 
 /* Heading */
@@ -48,6 +53,7 @@ label {
     color: #333;
 }
 
+/* Input Field Styling */
 input {
     width: 100%;
     padding: 12px;
@@ -98,6 +104,8 @@ button:active {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     animation: fadeIn 0.3s ease-in-out;
+    overflow-y: auto;  /* Enable scrolling if modal content overflows */
+    padding: 20px;      /* Padding to keep modal content away from screen edges */
 }
 
 .modal-content {
@@ -135,7 +143,7 @@ button:active {
     margin-top: 15px;
 }
 
-/* Responsive Styling */
+/* Responsive Styling for Smaller Screens */
 @media (max-width: 768px) {
     .container {
         padding: 20px;
