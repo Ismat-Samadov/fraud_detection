@@ -45,11 +45,11 @@ def predict():
     # Interpret prediction result
     result = {
         'prediction': 'Fraudulent Transaction' if prediction[0] == 1 else 'Non-Fraudulent Transaction',
-        'probability_of_non_fraud': probability[0],
-        'probability_of_fraud': probability[1]
+        'probability_of_non_fraud': round(probability[0], 2),
+        'probability_of_fraud': round(probability[1], 2)
     }
 
-    return render_template('index.html', result=result)
+    return jsonify(result)  # Return JSON response
 
 # Run the app
 if __name__ == '__main__':
