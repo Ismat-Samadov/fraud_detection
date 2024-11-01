@@ -2,9 +2,9 @@
 
 ## Overview
 
-During my research on fraud detection models, I faced several data challenges that prompted the need for a custom data generation tool. Many available open-source datasets, particularly in financial domains, feature encoded variable names like `v1`, `v2`, ... `v22`, which obscure the nature of each feature. This lack of interpretability makes it difficult to identify and explain which features are significant in detecting fraud, limiting model transparency and deployment potential.
+During my research on fraud detection models, I encountered several data challenges that inspired the need for a custom data generation tool. Many available open-source datasets, particularly in financial domains, feature encoded variable names like `v1`, `v2`, ... `v22`, which obscure the nature of each feature. This lack of interpretability makes it difficult to identify and explain which features are significant in detecting fraud, limiting model transparency and deployment potential.
 
-To overcome these limitations, I developed a synthetic banking data generator that produces realistic transaction data with meaningful feature names, such as `merchant_name` instead of an anonymous code like `v2`. This approach facilitates an end-to-end fraud detection model with enhanced interpretability and practical applications. The custom generator allows control over the number of customer transactions, transaction range, and the fraud percentage, making it ideal for understanding fraud detection workflows and exploring model performance in a controlled environment.
+To overcome these limitations, I developed a synthetic banking data generator that produces realistic transaction data with meaningful feature names, such as `merchant_name` instead of an anonymous code like `v2`. This approach facilitates an end-to-end fraud detection model with enhanced interpretability and practical applications. The custom generator allows control over the number of customer transactions, transaction range, and fraud percentage, making it ideal for understanding fraud detection workflows and exploring model performance in a controlled environment.
 
 ---
 
@@ -39,17 +39,41 @@ To overcome these limitations, I developed a synthetic banking data generator th
 
 ---
 
+## Installation and Setup
+
+To set up this project locally, follow these steps:
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/Ismat-Samadov/fraud_detection.git
+cd fraud_detection
+```
+
+### Install Requirements
+
+Ensure that you have Python 3 installed. Install the necessary libraries with:
+
+```bash
+pip install -r requirements.txt
+```
+
+### Run the Application
+
+To start the Flask app:
+
+```bash
+python app.py
+```
+
+The application should now be running on `http://127.0.0.1:5000`. Open this URL in your browser to access the fraud detection interface.
+
+---
+
 ## Data Generation
 
 **Why Synthetic Data Generation?**
 The data generator was developed to create realistic, interpretable financial transaction datasets. Instead of dealing with obscure feature names (`v1`, `v2`), the generator produces descriptive attributes (e.g., `merchant_category`, `device`) that clarify each feature's role in fraud detection. This interpretability improves both the model-building process and user experience when deploying fraud detection applications.
-
-### Key Features of the Data Generator
-
-- **Customer Profiles**: Simulates customer behavior using attributes like credit score, spending patterns, and device preferences.
-- **Transaction Attributes**: Provides diverse transaction details, covering merchant type, location, and currency.
-- **Fraud Simulation**: Allows specification of a fraud percentage, creating realistic fraud scenarios with high-risk patterns.
-- **Realistic Timestamps**: Adds transaction timestamps to mimic real shopping behavior.
 
 ### Example Data Generation
 
@@ -66,8 +90,6 @@ if __name__ == "__main__":
     df.to_csv("synthetic_fraud_data.csv", index=False)
     print("Dataset saved to synthetic_fraud_data.csv")
 ```
-
-This command will create a dataset with 500 customers, each having 100 to 200 transactions, and 10% of transactions labeled as fraudulent.
 
 ---
 
@@ -143,5 +165,10 @@ print(f"Probability of Fraudulent Transaction: {proba[0][1]:.2f}")
 - **Prediction**: The model returns whether a transaction is likely fraudulent or not.
 - **Probability**: Probabilities for each class provide insight into prediction confidence, allowing for risk-based thresholds in fraud detection.
 
-This example demonstrates how to leverage the trained model in real-world applications, offering both prediction and confidence levels for fraud detection.
+---
 
+## Demo
+
+You can test the fraud detection app via this deployed demo: [https://fraud-detection-gyhe.onrender.com/](https://fraud-detection-gyhe.onrender.com/)
+
+> **Note**: Since the app is hosted on a free server, initial loading may take 1-2 minutes as the server "wakes up."
