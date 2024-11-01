@@ -1,9 +1,9 @@
-/* Existing CSS */
+/* Global Styles */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
 }
 
 body {
@@ -11,25 +11,31 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f4f8;
+    background-color: #e9edf2;
+    overflow-x: hidden;
 }
 
 .container {
     max-width: 600px;
     width: 90%;
-    padding: 20px;
+    padding: 25px;
     background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Heading */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #007bff;
+    font-weight: 600;
     text-align: center;
 }
 
-h1 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: #333;
-}
-
+/* Form Group Styling */
 .form-group {
     margin-bottom: 15px;
     text-align: left;
@@ -37,33 +43,51 @@ h1 {
 
 label {
     display: block;
-    font-weight: bold;
+    font-weight: 600;
     margin-bottom: 5px;
     color: #333;
 }
 
-input, button {
+input {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     font-size: 1em;
     border: 1px solid #ccc;
     border-radius: 5px;
+    transition: border-color 0.3s;
 }
 
+input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Button Styling */
 button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
+    width: 100%;
+    padding: 12px;
+    font-size: 1em;
     font-weight: bold;
-    transition: background-color 0.3s;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #007bff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
     background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
-/* Modal styles */
+button:active {
+    background-color: #004080;
+    transform: translateY(0);
+}
+
+/* Modal Styling */
 .modal {
     display: none;
     position: fixed;
@@ -72,19 +96,21 @@ button:hover {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.3s ease-in-out;
 }
 
 .modal-content {
     position: relative;
     margin: auto;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    width: 80%;
+    background-color: #ffffff;
+    border-radius: 8px;
+    width: 90%;
     max-width: 500px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.4s ease-out;
 }
 
 .close {
@@ -92,12 +118,13 @@ button:hover {
     top: 10px;
     right: 15px;
     font-size: 1.5rem;
-    color: #aaa;
+    color: #888;
     cursor: pointer;
+    transition: color 0.2s;
 }
 
 .close:hover {
-    color: #333;
+    color: #444;
 }
 
 #resultText {
@@ -106,4 +133,50 @@ button:hover {
     font-size: 1em;
     color: #333;
     margin-top: 15px;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    input, button {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .modal-content {
+        width: 95%;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
